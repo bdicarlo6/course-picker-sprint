@@ -3,48 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RIT Course Registration System</title>
+    <title>RIT Course Registration</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎓 RIT Course Registration System</h1>
-            <p class="subtitle">Browse and explore available courses</p>
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-square"></div>
+                    <h1>RIT Course Registration</h1>
+                </div>
+                <div class="semester-info">Spring 2025</div>
+            </div>
         </header>
 
-        <div class="filters">
-            <div class="filter-group">
-                <label for="departmentFilter">Filter by Department:</label>
-                <select id="departmentFilter">
-                    <option value="all">All Departments</option>
-                </select>
-            </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Course Browser Section -->
+            <section class="course-browser">
+                <div class="browser-header">
+                    <h2>Available Courses</h2>
+                    <div class="filter-section">
+                        <label for="departmentFilter">Filter by Department:</label>
+                        <select id="departmentFilter" class="department-select">
+                            <option value="all">All Departments</option>
+                        </select>
+                    </div>
+                </div>
 
-            <div class="filter-group">
-                <label for="levelFilter">Filter by Level:</label>
-                <select id="levelFilter">
-                    <option value="all">All Levels</option>
-                    <option value="100">100 Level</option>
-                    <option value="200">200 Level</option>
-                    <option value="300">300 Level</option>
-                    <option value="400">400 Level</option>
-                    <option value="500">500 Level</option>
-                </select>
-            </div>
+                <div class="search-bar">
+                    <input type="text" id="searchBox" placeholder="Search courses by code or title...">
+                    <span class="search-icon">🔍</span>
+                </div>
 
-            <div class="filter-group">
-                <label for="searchBox">Search:</label>
-                <input type="text" id="searchBox" placeholder="Search by course code or title...">
-            </div>
-        </div>
+                <div class="course-count">
+                    <span id="courseCount">Loading courses...</span>
+                </div>
 
-        <div class="stats">
-            <span id="courseCount">Loading courses...</span>
-        </div>
+                <div id="courseList" class="course-list">
+                    <!-- Courses will be loaded here -->
+                </div>
+            </section>
 
-        <div id="courseList" class="course-list">
-            <!-- Courses will be dynamically loaded here -->
+            <!-- My Schedule Section -->
+            <aside class="my-schedule">
+                <div class="schedule-header">
+                    <h2>My Schedule</h2>
+                    <button id="clearSchedule" class="clear-btn">Clear All</button>
+                </div>
+                
+                <div class="schedule-content">
+                    <div id="scheduleList" class="schedule-list">
+                        <div class="empty-schedule">
+                            <div class="empty-icon">📚</div>
+                            <p>No courses added yet</p>
+                            <span>Start building your schedule!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-footer">
+                    <div class="total-credits">
+                        <span>Total Credits:</span>
+                        <span id="totalCredits" class="credits-number">0</span>
+                    </div>
+                    <button id="exportSchedule" class="export-btn">Export Schedule</button>
+                </div>
+            </aside>
         </div>
     </div>
 
